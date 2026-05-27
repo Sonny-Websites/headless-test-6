@@ -1,0 +1,115 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = "test" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="brand" href="/">test</a>
+        <nav class="nav">
+          <a href="/">Home</a>
+          <a href="/about">About</a>
+          <a href="/faq">FAQ</a>
+        </nav>
+      </div>
+    </header>
+    <main class="container">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>Powered by Wix Managed Headless.</p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  :root {
+    --bg: #f9f5ee;
+    --surface: #ffffff;
+    --text: #1e293b;
+    --accent: #0f766e;
+    --border: #e2e8f0;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    min-height: 100%;
+    font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+  }
+
+  .container {
+    width: min(980px, 92vw);
+    margin: 0 auto;
+  }
+
+  .site-header {
+    border-bottom: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(4px);
+    position: sticky;
+    top: 0;
+  }
+
+  .site-header .container {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 700;
+    letter-spacing: 0.02em;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .nav a {
+    text-decoration: none;
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .nav a:hover {
+    color: var(--accent);
+  }
+
+  main {
+    padding: 2rem 0 3rem;
+  }
+
+  .site-footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0 2rem;
+    color: #64748b;
+    font-size: 0.95rem;
+  }
+</style>

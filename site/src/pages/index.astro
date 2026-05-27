@@ -1,0 +1,105 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getAboutContent, getFaqItems } from "../lib/cms";
+
+const about = await getAboutContent();
+const faq = await getFaqItems();
+---
+
+<Layout title="test | Home">
+  <section class="hero">
+    <p class="eyebrow">CMS-Driven Marketing Site</p>
+    <h1>test</h1>
+    <p>
+      This Wix Managed Headless project was generated from a minimal prompt and
+      defaults to a CMS-only structure.
+    </p>
+  </section>
+
+  <section class="grid">
+    <article class="card">
+      <h2>About Preview</h2>
+      <h3>{about?.heading ?? "About test"}</h3>
+      <p>{about?.body ?? "About content is editable in Wix CMS."}</p>
+      <a href="/about">Read more</a>
+    </article>
+
+    <article class="card">
+      <h2>FAQ Preview</h2>
+      <ul>
+        {faq.slice(0, 3).map((item) => <li>{item.question}</li>)}
+      </ul>
+      <a href="/faq">View all FAQ</a>
+    </article>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 2rem;
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+  }
+
+  .hero h1 {
+    margin: 0.4rem 0 0.7rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  .hero p {
+    margin: 0;
+    max-width: 60ch;
+    line-height: 1.6;
+  }
+
+  .grid {
+    margin-top: 1.25rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.2rem;
+  }
+
+  .card h2 {
+    margin: 0 0 0.55rem;
+    font-size: 1.15rem;
+  }
+
+  .card h3 {
+    margin: 0 0 0.55rem;
+    font-size: 1rem;
+  }
+
+  .card p {
+    margin: 0 0 0.75rem;
+    line-height: 1.5;
+  }
+
+  .card ul {
+    margin: 0 0 0.75rem;
+    padding-left: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .card a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 700;
+  }
+</style>

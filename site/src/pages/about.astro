@@ -1,0 +1,42 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getAboutContent } from "../lib/cms";
+
+const about = await getAboutContent();
+---
+
+<Layout title="test | About">
+  <article class="panel">
+    <p class="eyebrow">About</p>
+    <h1>{about?.heading ?? "About test"}</h1>
+    <p>{about?.body ?? "This about page is powered by Wix CMS content."}</p>
+  </article>
+</Layout>
+
+<style>
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    max-width: 68ch;
+  }
+
+  .eyebrow {
+    margin: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  h1 {
+    margin: 0.4rem 0 0.8rem;
+  }
+
+  p {
+    margin: 0;
+    line-height: 1.6;
+  }
+</style>

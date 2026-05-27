@@ -1,0 +1,22 @@
+{
+  "phase": "seed-cms",
+  "status": "ok",
+  "seeded": {
+    "collectionIds": {
+      "about": "about-content",
+      "faq": "faq"
+    },
+    "itemCounts": {
+      "about": 1,
+      "faq": 3
+    }
+  },
+  "recipeCalls": [
+    {"url":"/wix-data/v2/collections (about-content)","status":200},
+    {"url":"/wix-data/v2/collections (faq)","status":200},
+    {"url":"/wix-data/v2/items (about-content)","status":200},
+    {"url":"/wix-data/v2/items (faq x3)","status":200},
+    {"url":"/wix-data/v2/items/query (about-content)","status":200},
+    {"url":"/wix-data/v2/items/query (faq)","status":200}
+  ]
+}
